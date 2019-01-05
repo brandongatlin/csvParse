@@ -8,9 +8,7 @@ $(document).ready(function() {
     }
 
     function postData(data) {
-        //Data is usable here
-        console.log("data", data);
-        $.post('/newFile', data, function(req, res) {});
+        $.post('/newFile', data);
     }
 
     function parseData(file, callBack) {
@@ -20,9 +18,8 @@ $(document).ready(function() {
             preview: 50,
             complete: function(results) {
                 results.data.forEach(el => {
-                        callBack(el)
-                    })
-                    // callBack(results.data[0]);
+                    callBack(el)
+                })
             }
         });
     }

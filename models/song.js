@@ -3,27 +3,27 @@ var Sequelize = require("sequelize");
 module.exports = function(sequelize, DataTypes) {
 
     var Song = sequelize.define('Song', {
-            "artist.hotttnesss": {
+            artistHotttnesss: {
                 allowNull: true,
                 type: DataTypes.FLOAT(),
             },
 
-            "artist.id": {
+            artistId: {
                 allowNull: true,
                 type: DataTypes.STRING(50),
             },
 
-            "artist.name": {
+            artistName: {
                 allowNull: true,
                 type: DataTypes.STRING(50),
             },
 
-            "title": {
+            title: {
                 allowNull: true,
                 type: DataTypes.STRING(50),
             },
 
-            "year": {
+            year: {
                 allowNull: true,
                 type: DataTypes.DATE(),
             }
