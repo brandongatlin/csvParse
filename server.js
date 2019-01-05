@@ -1,9 +1,12 @@
 var createError = require('http-errors');
+const chalkAnimation = require('chalk-animation')
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
+
+const db = require('./models');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -50,8 +53,20 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-app.listen(PORT, function() {
-    console.log("listening on port: " + PORT)
-})
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync({
+    force: true,
+    // force makes the db drop and recreate everytime you start the server
+    logging: true
+
+}).then(function() {
+    app.listen(PORT, function() {
+        console.log("------------------------------------------------------------------------------------------------------------");
+        console.log('N - e - w     D - a - t - a     N - e - w     D - a - t - a     N - e - w     D - a - t - a');
+        console.log("------------------------------------------------------------------------------------------------------------");
+        chalkAnimation.rainbow("App listening on port " + PORT + "!");
+    });
+});
 
 module.exports = app;

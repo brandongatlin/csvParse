@@ -1,5 +1,6 @@
 var express = require('express');
-// var router = express.Router();
+const db = require('../models')
+    // var router = express.Router();
 
 module.exports = function(app) {
     /* GET users listing. */
@@ -8,7 +9,11 @@ module.exports = function(app) {
     });
 
     app.post('/newFile', function(req, res, next) {
-        console.log("reqbody ", req.body)
+        // console.log("reqbody ", req.body);
+        db.Song.create(req.body).then(function(posted) {
+            console.log(posted)
+        })
+
     });
 }
 
