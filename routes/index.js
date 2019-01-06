@@ -11,10 +11,8 @@ module.exports = function(app) {
 
         let arrayOfSongs = req.body;
 
-        // console.log("arrayOfSongs", arrayOfSongs)
-
         arrayOfSongs.forEach(row => {
-                console.log('row', row)
+
                 db.Song.create({
                     artistHotttnesss: row["artist.hotttnesss"],
                     artistId: row["artist.id"],

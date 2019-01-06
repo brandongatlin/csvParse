@@ -26,12 +26,9 @@ $(document).ready(function() {
         Papa.parse(file, {
             header: true,
             dynamicTyping: true,
-            preview: 5,
+            preview: 3,
             complete: function(results) {
                 callBack(results.data)
-                    // results.data.forEach(el => {
-                    //     callBack(el)
-                    // })
             }
         });
     }
