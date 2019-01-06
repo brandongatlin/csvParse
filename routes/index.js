@@ -8,15 +8,24 @@ module.exports = function(app) {
     });
 
     app.post('/newFile', function(req, res, next) {
-        db.Song.create({
-                artistHotttnesss: req.body["artist.hotttnesss"],
-                artistId: req.body["artist.id"],
-                artistName: req.body["artist.name"],
-                title: req.body["title"],
-                year: req.body["year"]
+
+        let arrayOfSongs = req.body;
+
+        // console.log("arrayOfSongs", arrayOfSongs)
+
+        arrayOfSongs.forEach(row => {
+                console.log('row', row)
+                db.Song.create({
+                    artistHotttnesss: row["artist.hotttnesss"],
+                    artistId: row["artist.id"],
+                    artistName: row["artist.name"],
+                    title: row["title"],
+                    year: row["year"]
+                })
             })
-            //     .then(function (posted) {
-            // })
+            .then(function(posted) {
+                console.log("posted", posted)
+            })
     });
 
     app.get('/all', function(req, res) {
