@@ -8,9 +8,6 @@ const bodyParser = require('body-parser');
 
 const db = require('./models');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
 const PORT = 3000;
 
@@ -34,8 +31,7 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-require('./routes/index')(app);
-require('./routes/users')(app);
+require('./routes')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -62,9 +58,9 @@ db.sequelize.sync({
 
 }).then(function() {
     app.listen(PORT, function() {
-        console.log("------------------------------------------------------------------------------------------------------------");
-        console.log('N - e - w     D - a - t - a     N - e - w     D - a - t - a     N - e - w     D - a - t - a');
-        console.log("------------------------------------------------------------------------------------------------------------");
+        console.log("--------------------------------------------------------------------------");
+        console.log('N - e - w     D - a - t - a     N - e - w     D - a - t - a');
+        console.log("--------------------------------------------------------------------------");
         chalkAnimation.rainbow("App listening on port " + PORT + "!");
     });
 });
